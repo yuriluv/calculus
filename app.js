@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gammaValSpan = document.getElementById('gamma-val');
     const omega0ValSpan = document.getElementById('omega0-val');
-    const A0ValSpan = document.getElementById('A0-val');
-
     const resGamma = document.getElementById('res-gamma');
     const resOmega0 = document.getElementById('res-omega0');
     const resMaxOmega = document.getElementById('res-max-omega');
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update spans
         gammaValSpan.textContent = gamma.toFixed(2);
         omega0ValSpan.textContent = omega0.toFixed(2);
-        A0ValSpan.textContent = A0.toFixed(2);
 
         // Update results
         resGamma.textContent = gamma.toFixed(2);
@@ -109,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gammaInput.addEventListener('input', updatePlots);
     omega0Input.addEventListener('input', updatePlots);
-    A0Input.addEventListener('input', updatePlots);
 
     // Initial plot
     updatePlots();

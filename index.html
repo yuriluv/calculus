@@ -32,16 +32,14 @@
                 <h2>조건 조절</h2>
                 <div class="slider-group">
                     <label for="gamma">감쇠 상수 \(\gamma\): <span id="gamma-val">0.20</span></label>
-                    <input type="range" id="gamma" min="0.01" max="2.00" step="0.01" value="0.20">
+                    <input type="range" id="gamma" min="0.05" max="0.50" step="0.01" value="0.20">
                 </div>
                 <div class="slider-group">
                     <label for="omega0">중심 주파수 \(\omega_0\): <span id="omega0-val">5.00</span></label>
-                    <input type="range" id="omega0" min="1.00" max="10.00" step="0.01" value="5.00">
+                    <input type="range" id="omega0" min="3.00" max="7.00" step="0.01" value="5.00">
                 </div>
-                <div class="slider-group">
-                    <label for="A0">초기 진폭 \(A_0\): <span id="A0-val">1.00</span></label>
-                    <input type="range" id="A0" min="0.10" max="5.00" step="0.01" value="1.00">
-                </div>
+                <!-- A0는 1.00으로 고정 -->
+                <input type="hidden" id="A0" value="1.00">
             </section>
 
             <section class="results panel">
