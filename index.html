@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감쇠 미분방정식과 푸리에 변환을 활용한 포르피린 흡수 스펙트럼 분석</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>감쇠 미분방정식과 푸리에 변환을 활용한 포르피린 흡수 스펙트럼 분석</h1>
+        </header>
+
+        <main>
+            <section class="overview panel">
+                <h2>탐구 개요</h2>
+                <div class="equations">
+                    <p>\( P(t) = A_0 e^{-\gamma t} \sin(\omega_0 t) \)</p>
+                    <p>\( I(\omega) \propto \frac{1}{\gamma^2 + (\omega - \omega_0)^2} \)</p>
+                    <p>반치폭(FWHM) = \( 2\gamma \)</p>
+                </div>
+                <div class="summary">
+                    감쇠 상수 \(\gamma\)가 증가하면 시간 영역의 진동은 빠르게 감소하고, 푸리에 변환 후 주파수 영역의 흡수 피크는 넓어진다. 이는 반치폭이 \(2\gamma\)로 증가한다는 수기 계산 결과와 일치한다.
+                </div>
+            </section>
+
+            <section class="controls panel">
+                <h2>조건 조절</h2>
+                <div class="slider-group">
+                    <label for="gamma">감쇠 상수 \(\gamma\): <span id="gamma-val">0.20</span></label>
+                    <input type="range" id="gamma" min="0.01" max="2.00" step="0.01" value="0.20">
+                </div>
+                <div class="slider-group">
+                    <label for="omega0">중심 주파수 \(\omega_0\): <span id="omega0-val">5.00</span></label>
+                    <input type="range" id="omega0" min="1.00" max="10.00" step="0.01" value="5.00">
+                </div>
+                <div class="slider-group">
+                    <label for="A0">초기 진폭 \(A_0\): <span id="A0-val">1.00</span></label>
+                    <input type="range" id="A0" min="0.10" max="5.00" step="0.01" value="1.00">
+                </div>
+            </section>
+
+            <section class="results panel">
+                <h2>계산 결과</h2>
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span class="label">현재 \(\gamma\) 값</span>
+                        <span class="value" id="res-gamma">0.20</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">현재 \(\omega_0\) 값</span>
+                        <span class="value" id="res-omega0">5.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">최대 흡수 위치 \(\omega_0\)</span>
+                        <span class="value" id="res-max-omega">5.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">반치폭 \(2\gamma\)</span>
+                        <span class="value" id="res-fwhm">0.40</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">반치점 \(\omega_0 - \gamma\)</span>
+                        <span class="value" id="res-half-left">4.80</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">반치점 \(\omega_0 + \gamma\)</span>
+                        <span class="value" id="res-half-right">5.20</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="graphs">
+                <div class="graph-container panel">
+                    <h2>시간 영역 감쇠 진동</h2>
+                    <div id="time-plot" class="plot"></div>
+                </div>
+                <div class="graph-container panel">
+                    <h2>주파수 영역 흡수 스펙트럼</h2>
+                    <div id="freq-plot" class="plot"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
